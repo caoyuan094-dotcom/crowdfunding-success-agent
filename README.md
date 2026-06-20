@@ -2,9 +2,25 @@
 
 > Commercial use: this repository is published for portfolio/demo evaluation. Commercial use or resale requires written permission. See `COMMERCIAL_USE.md`.
 
-## Screenshot
+## Screenshots
 
 ![Crowdfunding Success Agent assessment chat](assets/screenshots/assessment-chat.png)
+
+**Empty assessment workspace**
+
+![Crowdfunding Success Agent empty workspace](assets/screenshots/empty-assessment-workspace.png)
+
+**Demo materials loaded**
+
+![Crowdfunding Success Agent demo materials](assets/screenshots/demo-materials-loaded.png)
+
+**Assessment report**
+
+![Crowdfunding Success Agent assessment report](assets/screenshots/assessment-report.png)
+
+**Report detail view**
+
+![Crowdfunding Success Agent report details](assets/screenshots/report-details.png)
 
 这是一套“对话式网页 App + 无代码智能体资料包”，用于评估 Kickstarter / Indiegogo 海外众筹项目的成功率，并输出改进方案。
 
