@@ -195,3 +195,9 @@ POST /api/agent
 - 默认面向 Kickstarter 和 Indiegogo，目标市场以欧美为主。
 - 不承诺众筹一定成功，只输出成功率判断、风险诊断和提升方案。
 - 对未验证来源的公众号或案例内容，只能作为待学习素材，不能作为事实依据写入客户报告。
+
+## Private Deployment / Customization
+
+For crowdfunding assessment workflow customization, private deployment, report templates, or consulting automation, scan WeChat to contact me.
+
+<img src="assets/wechat-qr.png" alt="WeChat QR code" width="220" />
