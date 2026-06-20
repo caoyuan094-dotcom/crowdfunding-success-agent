@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="上传产品想法、图片、PPT 或文档，生成 Kickstarter / Indiegogo 海外众筹成功率评估。"
+    />
+    <title>海外众筹成功率评估智能体</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="chat-shell">
+      <section class="chat-card">
+        <header class="chat-header">
+          <div class="brand-line">
+            <span class="brand-mark">UP</span>
+            <span>海外众筹成功率评估智能体</span>
+          </div>
+          <h1>把产品想法和资料发过来，我来判断众筹成功率。</h1>
+          <p>支持图片、PPT、PDF、Word、Excel、CSV、TXT。视频先不作为重点处理。</p>
+        </header>
+
+        <section id="chatMessages" class="chat-messages" aria-live="polite">
+          <article class="chat-message assistant">
+            <div class="avatar">顾问</div>
+            <div class="bubble">
+              <p>请直接描述你的产品、目标市场、当前进度和想解决的问题。也可以上传图片、PPT、图纸或资料文件。</p>
+              <p class="muted-line">我会先判断项目阶段，再给出成功率、关键风险、缺失资料和下一步改进方案。</p>
+            </div>
+          </article>
+        </section>
+
+        <section class="composer">
+          <div id="fileList" class="file-list">
+            <div class="empty-files">尚未上传资料</div>
+          </div>
+
+          <label class="composer-input" for="ideaInput">
+            <textarea
+              id="ideaInput"
+              rows="5"
+              placeholder="例如：我们有一个智能宠物喂食器样品和中文PPT，想做 Kickstarter，目标美国，BOM 成本 35 美金，早鸟价 89 美金，还没有认证和视频..."
+            ></textarea>
+          </label>
+
+          <div class="composer-actions">
+            <label class="attach-btn" for="fileInput">
+              <input
+                id="fileInput"
+                type="file"
+                multiple
+                accept=".png,.jpg,.jpeg,.webp,.gif,.pdf,.ppt,.pptx,.doc,.docx,.xls,.xlsx,.csv,.txt,.md"
+              />
+              上传资料
+            </label>
+            <button id="clearFilesBtn" class="ghost-btn" type="button">清空附件</button>
+            <button id="loadDemoBtn" class="ghost-btn" type="button">示例</button>
+            <button id="runAgentBtn" class="primary-btn" type="button">开始评估</button>
+          </div>
+          <div id="agentStatus" class="agent-status">文件只在本地整理；配置 API Key 后可调用智能体深度评估。</div>
+        </section>
+      </section>
+    </main>
+
+    <form id="assessmentForm" class="hidden-form" aria-hidden="true">
+      <input id="productName" name="productName" />
+      <select id="category" name="category">
+        <option value=""></option>
+        <option value="outdoor"></option>
+        <option value="smart-hardware"></option>
+        <option value="pet"></option>
+        <option value="home"></option>
+        <option value="tool"></option>
+        <option value="creative"></option>
+        <option value="fashion"></option>
+        <option value="other"></option>
+      </select>
+      <select id="targetMarket" name="targetMarket">
+        <option value=""></option>
+        <option value="us"></option>
+        <option value="eu"></option>
+        <option value="jp"></option>
+        <option value="global"></option>
+        <option value="unknown"></option>
+      </select>
+      <textarea id="description" name="description"></textarea>
+      <textarea id="painPoint" name="painPoint"></textarea>
+      <select id="prototype" name="prototype">
+        <option value=""></option>
+        <option value="render"></option>
+        <option value="appearance"></option>
+        <option value="engineering"></option>
+        <option value="production"></option>
+      </select>
+      <select id="certification" name="certification">
+        <option value=""></option>
+        <option value="none"></option>
+        <option value="planned"></option>
+        <option value="testing"></option>
+        <option value="done"></option>
+        <option value="not-needed"></option>
+      </select>
+      <input id="bomCost" name="bomCost" type="number" />
+      <input id="earlyBirdPrice" name="earlyBirdPrice" type="number" />
+      <input id="shippingCost" name="shippingCost" type="number" />
+      <input id="fundingGoal" name="fundingGoal" type="number" />
+      <select id="videoStatus" name="videoStatus">
+        <option value=""></option>
+        <option value="none"></option>
+        <option value="ppt"></option>
+        <option value="draft"></option>
+        <option value="ready"></option>
+        <option value="tested"></option>
+      </select>
+      <select id="proofAssets" name="proofAssets">
+        <option value=""></option>
+        <option value="none"></option>
+        <option value="basic"></option>
+        <option value="scenario"></option>
+        <option value="media"></option>
+      </select>
+      <input id="adBudget" name="adBudget" type="number" />
+      <select id="trafficResources" name="trafficResources">
+        <option value=""></option>
+        <option value="none"></option>
+        <option value="some-kol"></option>
+        <option value="prelaunch"></option>
+        <option value="full"></option>
+      </select>
+      <select id="factoryStatus" name="factoryStatus">
+        <option value=""></option>
+        <option value="unknown"></option>
+        <option value="basic"></option>
+        <option value="experienced"></option>
+        <option value="ready"></option>
+      </select>
+      <select id="teamExperience" name="teamExperience">
+        <option value=""></option>
+        <option value="none"></option>
+        <option value="service"></option>
+        <option value="past"></option>
+        <option value="strong"></option>
+      </select>
+      <textarea id="competitors" name="competitors"></textarea>
+      <textarea id="launchData" name="launchData"></textarea>
+      <textarea id="fulfillmentData" name="fulfillmentData"></textarea>
+      <textarea id="supplyChain" name="supplyChain"></textarea>
+    </form>
+
+    <div class="legacy-hidden" aria-hidden="true">
+      <div id="stageList"></div>
+      <span id="stageBadge"></span>
+      <span id="scoreValue"></span>
+      <span id="scoreRing"></span>
+      <span id="gradeValue"></span>
+      <span id="scoreSummary"></span>
+      <ol id="priorityList"></ol>
+      <div id="riskList"></div>
+      <span id="readinessTag"></span>
+      <pre id="reportOutput"></pre>
+      <button id="analyzeIdeaBtn" type="button"></button>
+      <button id="resetBtn" type="button"></button>
+      <button id="copyReportBtn" type="button"></button>
+      <button id="copyReportTopBtn" type="button"></button>
+      <button id="downloadBtn" type="button"></button>
+    </div>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <script src="./app.js"></script>
+  </body>
+</html>
