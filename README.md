@@ -2,6 +2,9 @@
 
 > Commercial use: this repository is published for portfolio/demo evaluation. Commercial use or resale requires written permission. See `COMMERCIAL_USE.md`.
 
+## Screenshot
+
+![Crowdfunding Success Agent assessment chat](assets/screenshots/assessment-chat.png)
 
 这是一套“对话式网页 App + 无代码智能体资料包”，用于评估 Kickstarter / Indiegogo 海外众筹项目的成功率，并输出改进方案。
 
